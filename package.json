@@ -1,0 +1,34 @@
+{
+  "name": "ajs-regular-nickname",
+  "version": "1.0.0",
+  "description": "homework «Регулярные выражения» Никнеймы",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "lint": "eslint . --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TakanawaYuku/ajs-regular-nickname.git"
+  },
+  "author": "TakanawaYuku",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TakanawaYuku/ajs-regular-nickname/issues"
+  },
+  "homepage": "https://github.com/TakanawaYuku/ajs-regular-nickname#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "babel-jest": "^29.4.3",
+    "babel-loader": "^9.1.2",
+    "eslint": "^8.35.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "jest": "^29.4.3"
+  },
+  "dependencies": {
+    "core-js": "^3.28.0"
+  }
+}
