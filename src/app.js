@@ -1,22 +1,20 @@
 export default class Validator {
-  constructor(name) {
-    this.name = name;
-  }
+  static validateUsername(nameParam, message = false) {
+    let name = nameParam;
+    if (/^[\d|_|-]/.test(name) || /[\d|_|-]$/.test(name)) return message ? 'Имя не должно начинаться и заканчиваться цифрами, символами подчёркивания или тире' : false;
 
-  validateUserName() {
-    const expectRightUserName = /^[-_\w\d]+$/; // Допустимы только латинские буквы, символы тире -, подчёркивания _ и цифры (0-9)
-    const expextRightStartSymbols = /^[^-_\d]/; // Имя не должно начинаться цифрами, символами подчёркивания или тире
-    const expectRightEndSymbols = /.+[^-_\d]$/; // Имя не должно заканчиваться цифрами, символами подчёркивания или тире
-    const exeptThreeNumbersInRow = /\d{4,}/; // Имя не должно содержать подряд более трёх цифр
+    name = name.replace(/-/g, 'q');
 
-    if (!expectRightUserName.test(this.name)) {
-      throw new Error('Допустимы только латинские буквы, символы тире -, подчёркивания _ и цифры (0-9)');
-    } else if (!expextRightStartSymbols.test(this.name)) {
-      throw new Error('Имя не должно начинаться цифрами, символами подчёркивания или тире');
-    } else if (!expectRightEndSymbols.test(this.name)) {
-      throw new Error('Имя не должно заканчиваться цифрами, символами подчёркивания или тире');
-    } else if (!exeptThreeNumbersInRow.test(this.name)) {
-      throw new Error('Имя не должно содержать подряд более трёх цифр');
-    }
+    if (/\W/.test(name)) return message ? 'Допустимы только латинские буквы, символы тире -, подчёркивания _ и цифры (0-9)' : false;
+
+    if (/\d{4}/.test(name)) return message ? 'Имя не должно содержать подряд более трёх цифр' : false;
+
+    return message ? 'ok' : true;
   }
 }
+
+// Для проверки
+const names = ['Yuku', 'Takanawa', 'Bukuska', 'bukuska1992', '_Nick', 'Nick2306w'];
+
+// eslint-disable-next-line no-console
+names.forEach((name) => console.log(name, Validator.validateUsername(name, true)));
